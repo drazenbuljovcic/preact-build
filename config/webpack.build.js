@@ -22,7 +22,7 @@ module.exports = webpackMerge(webpackDevConfig, {
   },
   plugins: [
     new webpackExtract({
-      filename: 'css/[name].[hash:6].css',
+      filename: 'css/[name].bundle.css',
       allChunks: true
     })
   ]

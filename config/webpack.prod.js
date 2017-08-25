@@ -8,6 +8,10 @@ const webpackConfig = require('./webpack.config.js'),
   webpackBuild = require('./webpack.build.js');
 
 module.exports = webpackMerge(webpackConfig, {
+  output: {
+    filename: 'js/[name].bundle.[chunkhash:6].js',
+    chunkFilename: 'js/[name].chunk.[chunkhash:6].js',
+  },
   resolve: {
     alias: {
       'react': 'preact-compat',
@@ -29,9 +33,19 @@ module.exports = webpackMerge(webpackConfig, {
       fileBlacklist: [ /\.map/, /\.css/ ]
     }),
     new webpackExtract({
-      filename: 'css/[name].[hash:6].css',
+      filename: 'css/[name].bundle.[chunkhash:6].css',
       allChunks: true
-    })
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      filename: 'js/[name].bundle.[chunkhash:6].js',
+      minChunks: function (module) {
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      },
+      name: 'vendor'
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest'
+    }),
   ],
   module: {
     rules: [

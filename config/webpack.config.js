@@ -10,8 +10,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(ROOT_DIR, 'public'),
-    filename: 'js/[name].bundle.[hash:6].js',
-    chunkFilename: 'js/[name].chunk.[hash:6].js',
+    filename: 'js/[name].bundle.[chunkhash:6].js',
+    chunkFilename: 'js/[name].chunk.[chunkhash:6].js',
     publicPath: '/'
   },
   devtool: 'source-maps',
@@ -59,16 +59,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      filename: 'js/[name].bundle.[hash:6].js',
-      minChunks: function (module) {
-        return module.context && module.context.indexOf('node_modules') !== -1;
-      },
-      name: 'vendor'
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest'
-    }),
     new webpackHtml({
       template: path.resolve(ROOT_DIR, 'app', 'index.html'),
     })

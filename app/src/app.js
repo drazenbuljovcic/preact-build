@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import AsyncRoute from './components/helpers/AsyncRoute';
-
+// import Main from './components/Main';
 import '@/styles/main';
 
 if(env === 'development') {
@@ -26,6 +26,7 @@ render(
       <Switch>
         <Route exact route="/" 
           component={props => <AsyncRoute loading={import(/* webpackChunkName: "Main" */ './components/Main')} props={props} />} />
+          {/* component={props => <Main props={props} />} */}
       </Switch>
     </Router>
   </Provider>,
