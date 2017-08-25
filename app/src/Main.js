@@ -6,7 +6,10 @@ export class Main extends React.Component {
     super(props, context);
   }
   render() {
-    return <h1>Preact Test - {this.props.config.env}</h1>;
+    return (<div>
+      <h1>Preact Test - {this.props.config.env}</h1>
+      {/* <img src={require('@/assets/images/logo.png')} /> */}
+    </div>);
   }
 }
 

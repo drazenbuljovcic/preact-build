@@ -12,6 +12,8 @@ import store from './store';
 
 import AsyncRoute from './AsyncRoute';
 
+import '@/styles/main';
+
 if(env === 'development') {
   if (module.hot) {
     module.hot.accept();

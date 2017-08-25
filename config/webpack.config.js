@@ -16,8 +16,11 @@ module.exports = {
   },
   devtool: 'source-maps',
   resolve: {
-    extensions: [ '.js' ],
-    modules: [ 'node_modules' ]
+    extensions: [ '.js', '.sass', '.html' ],
+    modules: [ 'node_modules' ],
+    alias: {
+      '@': path.resolve(ROOT_DIR, 'app')
+    }    
   },
   module: {
     rules: [
@@ -27,6 +30,31 @@ module.exports = {
           loader: 'babel-loader'
         },
         exclude: /node_modules/
+      },
+      { 
+        test: /\.(scss|sass)/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(png|gif|jpe?g|svg)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1000,
+              name: '[name][hash:6].[ext]',
+              outputPath: 'images/'
+            },
+          },
+          { loader: 'image-webpack-loader' }
+        ]
       }
     ]
   },
