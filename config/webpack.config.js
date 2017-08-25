@@ -10,8 +10,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(ROOT_DIR, 'public'),
-    filename: 'js/[name].bundle.js',
-    chunkFilename: 'js/[name].chunk.js',
+    filename: 'js/[name].bundle.[hash:6].js',
+    chunkFilename: 'js/[name].chunk.[hash:6].js',
     publicPath: '/'
   },
   devtool: 'source-maps',
@@ -49,7 +49,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 1000,
-              name: '[name][hash:6].[ext]',
+              name: '[name].[hash:6].[ext]',
               outputPath: 'images/'
             },
           },
@@ -60,7 +60,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      filename: 'js/[name].bundle.js',
+      filename: 'js/[name].bundle.[hash:6].js',
       minChunks: function (module) {
         return module.context && module.context.indexOf('node_modules') !== -1;
       },
