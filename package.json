@@ -6,8 +6,9 @@
   "scripts": {
     "test": "jest --watch",
     "test:once": "jest",
+    "lint": "eslint 'app/**/*.js' --config .eslintrc.json",
     "clean": "rimraf public/",
-    "dev": "webpack-dashboard -- webpack-dev-server --config config/webpack.dev-server.js --hot",
+    "dev": "webpack-dashboard -- webpack-dev-server --config config/webpack.dev-server.js --hot --progress",
     "prebuild:dev": "npm run clean",
     "build:dev": "webpack --progress --config config/webpack.build.js",
     "prebuild:prod": "npm run clean",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.0",
@@ -26,6 +28,12 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.5",
     "enzyme": "^2.9.1",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.3.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.28.0",
@@ -36,14 +44,8 @@
     "preact": "^8.2.1",
     "preact-compat": "^3.16.0",
     "preload-webpack-plugin": "^1.2.3",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-redux": "^5.0.5",
-    "react-router-dom": "^4.1.2",
     "react-test-renderer": "^15.6.1",
-    "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
@@ -57,6 +59,13 @@
   },
   "dependencies": {
     "compression": "^1.7.0",
-    "cross-env": "^5.0.5"
+    "cross-env": "^5.0.5",
+    "react": "^15.6.1",
+    "prop-types": "^15.5.10",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   }
 }

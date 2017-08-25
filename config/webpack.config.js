@@ -6,7 +6,7 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 
 module.exports = {
   entry: {
-    'app': path.resolve(ROOT_DIR, 'app', 'src', 'app.js')
+    'app': path.resolve(ROOT_DIR, 'app', 'src', 'app.jsx')
   },
   output: {
     path: path.resolve(ROOT_DIR, 'public'),
@@ -16,7 +16,7 @@ module.exports = {
   },
   devtool: 'source-maps',
   resolve: {
-    extensions: [ '.js', '.sass', '.html' ],
+    extensions: [ '.js', '.jsx', '.sass', '.html' ],
     modules: [ 'node_modules' ],
     alias: {
       '@': path.resolve(ROOT_DIR, 'app')
@@ -24,6 +24,14 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.jsx?/,
+        enforce: 'pre',
+        exclude: /node_modules/,
+        use: [
+          'eslint-loader'
+        ]
+      },
       {
         test: /\.jsx?/,
         use: {

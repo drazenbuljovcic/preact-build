@@ -1,8 +1,8 @@
 export default (state = {
-  env: env  
+  env,
 }, action) => {
-  switch(action.type) {
-  default:
-    return state;
+  switch (action.type) {
+    default:
+      return state;
   }
 };
